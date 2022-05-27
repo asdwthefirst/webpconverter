@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path"
-	"status-feed-server/logger"
+	"webpconverter/logger"
 )
 
 type ImgType int

@@ -1,19 +1,13 @@
 package main
 
 import (
-	"status-feed-server/apiserver"
-	"status-feed-server/globalctx"
+	"webpconverter/apiserver"
+	"webpconverter/logger"
 )
 
 func main() {
-	globalctx.InitCfg()
 
-	//go ytsource.Init()
-	//
-	//go wallpaper.Init()
-	//
-	//go ytsource.GetLastFMResource()
-	//go keeper.GetLastFMResource()
+	logger.Init()
 
 	apiserver.RunServer()
 }
