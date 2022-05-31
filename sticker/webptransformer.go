@@ -27,8 +27,8 @@ var transformerMap = map[ImgType]transformer{
 	PNG:  PNG2WebpTransformer,
 }
 
-var sourceFilePath = "../imgsource"
-var targetFilePath = "../imgtarget"
+var sourceFilePath = "/root/sticker/imgsource"
+var targetFilePath = "/root/sticker/imgtarget"
 
 func Transform(source []byte, imgType ImgType) (target []byte, targetFile string, err error) {
 
