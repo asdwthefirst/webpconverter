@@ -8,6 +8,6 @@ import (
 func main() {
 
 	logger.Init()
-
 	apiserver.RunServer()
+
 }
