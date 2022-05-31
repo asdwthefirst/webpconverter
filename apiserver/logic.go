@@ -1,6 +1,7 @@
 package apiserver
 
 import (
+	"fmt"
 	fc "webpconverter/feedconst"
 	"webpconverter/sticker"
 
@@ -38,7 +39,7 @@ func Transform(c *gin.Context) {
 		HttpFailResp(c, http.StatusOK, fc.RequestFormDataErrCode, nil)
 		return
 	}
-	//defer file.Close()
+	defer file.Close()
 
 	source, err := ioutil.ReadAll(file)
 	//fmt.Println("source len", len(source))
@@ -49,6 +50,7 @@ func Transform(c *gin.Context) {
 	}
 
 	_, targetFile, err := sticker.Transform(source, fileType)
+	fmt.Println(targetFile)
 	if err != nil {
 		HttpFailResp(c, http.StatusOK, fc.TransformFailCode, nil)
 		return
@@ -56,7 +58,7 @@ func Transform(c *gin.Context) {
 
 	c.File(targetFile)
 	//defer func() {
-	//	//os.Remove(targetFile)
+	//	os.Remove(targetFile)
 	//}()
 
 }
