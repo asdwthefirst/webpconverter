@@ -4,11 +4,9 @@ import (
 	fc "webpconverter/feedconst"
 	"webpconverter/sticker"
 
+	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
-	"os"
-
-	"github.com/gin-gonic/gin"
 )
 
 func Transform(c *gin.Context) {
@@ -40,9 +38,10 @@ func Transform(c *gin.Context) {
 		HttpFailResp(c, http.StatusOK, fc.RequestFormDataErrCode, nil)
 		return
 	}
-	defer file.Close()
+	//defer file.Close()
 
 	source, err := ioutil.ReadAll(file)
+	//fmt.Println("source len", len(source))
 
 	if err != nil {
 		HttpFailResp(c, http.StatusOK, fc.RequestFormDataErrCode, nil)
@@ -56,8 +55,8 @@ func Transform(c *gin.Context) {
 	}
 
 	c.File(targetFile)
-	defer func() {
-		os.Remove(targetFile)
-	}()
+	//defer func() {
+	//	//os.Remove(targetFile)
+	//}()
 
 }
