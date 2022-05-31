@@ -77,7 +77,7 @@ func GIF2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	cmd := exec.Command("gif2webp", sourceFile, "-o", targetFile)
 	cmd.Run()
 
-	defer os.Remove(sourceFile)
+	//defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
@@ -106,7 +106,7 @@ func JPEG2WebpTransformer(source []byte) (target []byte, targetFile string, err 
 	fmt.Println("exec cmd:", cmd.String())
 	cmd.Run()
 
-	defer os.Remove(sourceFile)
+	//defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
@@ -132,7 +132,7 @@ func PNG2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	fmt.Println("exec cmd:", cmd.String())
 	cmd.Run()
 
-	defer os.Remove(sourceFile)
+	//defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
