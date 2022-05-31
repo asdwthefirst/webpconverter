@@ -75,7 +75,9 @@ func GIF2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	}
 
 	cmd := exec.Command("gif2webp", sourceFile, "-o", targetFile)
-	cmd.Run()
+	//cmd.Run()
+	output, _ := cmd.Output()
+	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	//defer os.Remove(sourceFile)
 
@@ -103,8 +105,9 @@ func JPEG2WebpTransformer(source []byte) (target []byte, targetFile string, err 
 	}
 
 	cmd := exec.Command("img2webp", "-lossy", sourceFile, "-o", targetFile)
-	fmt.Println("exec cmd:", cmd.String())
-	cmd.Run()
+	//cmd.Run()
+	output, _ := cmd.Output()
+	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	//defer os.Remove(sourceFile)
 
@@ -129,8 +132,9 @@ func PNG2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	}
 
 	cmd := exec.Command("img2webp", "-lossy", sourceFile, "-o", targetFile)
-	fmt.Println("exec cmd:", cmd.String())
-	cmd.Run()
+	//cmd.Run()
+	output, _ := cmd.Output()
+	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	//defer os.Remove(sourceFile)
 
