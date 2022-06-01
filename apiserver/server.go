@@ -8,6 +8,5 @@ func RunServer() {
 	r := gin.Default()
 	NewApiController(r).Router()
 
-	r.Run(":8080")
+	r.Run("0.0.0.0:8080")
 }
-
