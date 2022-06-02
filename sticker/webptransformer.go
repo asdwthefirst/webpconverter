@@ -30,6 +30,9 @@ var transformerMap = map[ImgType]transformer{
 var sourceFilePath = "/root/sticker/imgsource"
 var targetFilePath = "/root/sticker/imgtarget"
 
+//var sourceFilePath = "./imgsource"
+//var targetFilePath = "./imgtarget"
+
 func Transform(source []byte, imgType ImgType) (target []byte, targetFile string, err error) {
 
 	if len(source) == 0 {
@@ -76,7 +79,11 @@ func GIF2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 
 	cmd := exec.Command("gif2webp", sourceFile, "-o", targetFile)
 	//cmd.Run()
-	output, _ := cmd.Output()
+	output, err := cmd.Output()
+	if err != nil {
+		logger.Logger.Error("gif2webp cmd err:", err)
+		return
+	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	defer os.Remove(sourceFile)
@@ -106,7 +113,11 @@ func JPEG2WebpTransformer(source []byte) (target []byte, targetFile string, err 
 
 	cmd := exec.Command("img2webp", "-lossy", sourceFile, "-o", targetFile)
 	//cmd.Run()
-	output, _ := cmd.Output()
+	output, err := cmd.Output()
+	if err != nil {
+		logger.Logger.Error("gif2webp cmd err:", err)
+		return
+	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	defer os.Remove(sourceFile)
@@ -133,7 +144,11 @@ func PNG2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 
 	cmd := exec.Command("img2webp", "-lossy", sourceFile, "-o", targetFile)
 	//cmd.Run()
-	output, _ := cmd.Output()
+	output, err := cmd.Output()
+	if err != nil {
+		logger.Logger.Error("gif2webp cmd err:", err)
+		return
+	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
 	defer os.Remove(sourceFile)

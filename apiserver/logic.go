@@ -2,7 +2,6 @@ package apiserver
 
 import (
 	"fmt"
-	"os"
 	fc "webpconverter/feedconst"
 	"webpconverter/sticker"
 
@@ -58,8 +57,8 @@ func Transform(c *gin.Context) {
 	}
 
 	c.File(targetFile)
-	defer func() {
-		os.Remove(targetFile)
-	}()
+	//defer func() {
+	//	os.Remove(targetFile)
+	//}()
 
 }
