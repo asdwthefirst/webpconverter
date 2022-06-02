@@ -86,7 +86,7 @@ func GIF2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
-	//defer os.Remove(sourceFile)
+	defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
@@ -120,7 +120,7 @@ func JPEG2WebpTransformer(source []byte) (target []byte, targetFile string, err 
 	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
-	//defer os.Remove(sourceFile)
+	defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
@@ -151,7 +151,7 @@ func PNG2WebpTransformer(source []byte) (target []byte, targetFile string, err e
 	}
 	logger.Logger.Info(cmd.String(), "----out:", output)
 
-	//defer os.Remove(sourceFile)
+	defer os.Remove(sourceFile)
 
 	target, err = ioutil.ReadFile(targetFile)
 	if err != nil {
